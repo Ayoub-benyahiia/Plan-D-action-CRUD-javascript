@@ -60,3 +60,19 @@ function displayTasks() {
         tasksContainer.appendChild(div);
     });
 };
+
+function addTask() {
+    const newTask = {
+        id: Date.now(),
+        title: titleInput.value,
+        description: descriptionInput.value,
+        completed: false
+    };
+
+    tasks.push(newTask);
+
+    titleInput.value = "";
+    descriptionInput.value = "";
+
+    displayTasks();
+}

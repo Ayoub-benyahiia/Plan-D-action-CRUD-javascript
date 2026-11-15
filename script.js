@@ -19,6 +19,8 @@ let tasks = [
     }
 ];
 
+let editingTaskId = null;
+
 const taskForm = document.getElementById("taskForm");
 
 const titleInput = document.getElementById("title");
@@ -76,3 +78,20 @@ function addTask() {
 
     displayTasks();
 }
+
+
+function deleteTask(id) {
+    const index = tasks.findIndex(task => task.id === id);
+    tasks.splice(index, 1);
+    displayTasks();
+}
+
+function editTask(id) {
+    const task = tasks.find(task => task.id === id);
+
+    titleInput.value = task.title;
+    descriptionInput.value = task.description;
+
+    submitBtn.textContent = "Modifier";
+    editingTaskId = id;
+};

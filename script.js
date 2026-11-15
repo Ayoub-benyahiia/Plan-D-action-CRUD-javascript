@@ -95,3 +95,13 @@ function editTask(id) {
     submitBtn.textContent = "Modifier";
     editingTaskId = id;
 };
+
+function updateTask() {
+  const task = tasks.find(task => task.id === editingTaskId);
+
+  task.title = titleInput.value;
+  task.description = descriptionInput.value;
+
+  titleInput.value = "";
+  descriptionInput.value = "";
+}

@@ -97,11 +97,28 @@ function editTask(id) {
 };
 
 function updateTask() {
-  const task = tasks.find(task => task.id === editingTaskId);
+    const task = tasks.find(task => task.id === editingTaskId);
 
-  task.title = titleInput.value;
-  task.description = descriptionInput.value;
+    task.title = titleInput.value;
+    task.description = descriptionInput.value;
 
-  titleInput.value = "";
-  descriptionInput.value = "";
-}
+    titleInput.value = "";
+    descriptionInput.value = "";
+
+    submitBtn.textContent = "Ajouter";
+    editingTaskId = null;
+    displayTasks();
+};
+
+
+taskForm.addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    if (editingTaskId === null) {
+        addTask();
+    } else {
+        updateTask();
+    }
+});
+
+displayTasks();
